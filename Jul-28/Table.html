@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Concept in HTML</title>
+    <style>
+        table, th, td {
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <table>
+        <caption>shopping Bill</caption>
+        <thead>
+            <tr>
+                <th>S No</th>
+                <th>Item/Desc</th>
+                <th>Department</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+
+            </tr>
+            </thead>
+
+           
+            <tbody>
+                <tr>
+                    <td>01</td>
+                    <td>Milk</td>
+                    <td>Dairy</td>
+                    <td>2</td>
+                    <td>60</td>
+                    <td>120</td>
+                </tr>
+
+                <tr>
+                    <td>02</td>
+                    <td>Coffee</td>
+                    <td rowspan="2">Grocery</td>
+                    <td>10</td>
+                    <td>15</td>
+                    <td>150</td>
+                </tr>
+
+                <tr>
+                    <td>03</td>
+                    <td>Sugar</td>
+                    <!-- <td></td> -->
+                    <td>2</td>
+                    <td>50</td>
+                    <td>100</td>
+                </tr>
+
+                
+            </tbody>
+           
+               <tfoot>
+                    <tr>
+                        <td colspan="5">Sub Total</td>
+                        <td>370</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Delivery Charges</td>
+                        <td>30</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">Total Bill</td>
+                        <td >400</td>
+                    </tr>
+                </tfoot>
+             
+
+    </table>
+    
+</body>
+</html>

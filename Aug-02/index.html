@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Tag</title>
+</head>
+<body>
+    <form novalidate>
+        <input type="text" required placeholder="Enter something here">
+        <input type="submit">
+
+        <br><hr>
+        <input type="text" autofocus><br><hr>
+        <textarea name="msz" id="msz" cols="30" rows="5" placeholder="Type message"></textarea><hr>
+        <audio src="./AUD-20201222-WA0005.mp3" type="audio/mp3" controlsList="nodownload"    controls></audio>
+        <video width="500" poster="C:\Users\Shishpal chauhan\Downloads\just.jpg" controls>
+            <source src="amme gujrati.mp4" >
+            <track kind="caption" src="english.vtt" srclang="en" label="English">
+            <track kind="caption"  src="hindi.vtt" srclang="hi" label="हिन्दी">
+        </video>
+    </form>
+    
+    <script>
+        var video=document.querySelector("video");
+        video.play();
+        video.pause();
+        video.volume();
+        video.currentTime;
+        video.duration;
+    </script>
+</body>
+</html>

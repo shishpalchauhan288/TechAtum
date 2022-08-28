@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry Form</title>
+</head>
+<body>
+
+   <div>
+    <form action="inndex.php" method="post" target="_blank">
+        <fieldset>
+            <legend>Enquiry Form</legend>
+
+            <table>
+                <tr>
+                    <td><label for="_name">Name</label></td>
+                    <td><input type="text" id="nm" name="name"></td>
+                </tr>
+                <tr>
+                    <td><label for="_name">Email</label></td>
+                    <td><input type="text" id="mail" name="mail"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="">Age</label></td>
+                    <td><input type="text"size="3" maxlength="3" id="age" name="ge"></td>
+                </tr>
+
+
+                <tr>
+                    <td><label for="_country">Country</label></td>
+                    <td><input type="text" id="cntr" name="country" value="India" readonly></td>
+                </tr>
+
+                <tr>
+                    <td><label for="_name">Password</label></td>
+                    <td><input type="password" id="pass" name="password"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="_name">Resume</label></td>
+                    <td><input type="file" id="rsm" name="Resume"></td>
+                </tr>
+
+                <tr>
+                    <td>Hobbies</td>>
+                    <td>
+                        <input type="checkbox" id="cric" checked><label for="cric">Cricket</label>
+                        <input type="checkbox" id="ftb"><label for="ftb">Football</label>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <input type="radio" id="ml" name="male" ><label for="ml">Male</label>
+                        <input type="radio" id="fl" name="male" checked><label for="ml">Female</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="_name">Hobbies</label></td>
+                    <td><input type="text" id="mail" name="mail"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="m_city">City</label></td>
+                    <td>
+                        <select name="city" id="m_city">
+                            <option value=""  disabled selected>---Choose City---</option>>
+                                <optgroup label="Uttarakhand">
+                                    <option value="kvp">Kashipur</option>
+                                   <option value="ddn">Dehradun</option>
+                                   <option value="hldn">Haldwani</option>
+                                   <option value="nntl">Nainital</option>
+                                   <option value="Uki">Uttarkashi</option>
+                                   <option value="chml">Chamoli</option>
+                                   <option value="hrdr">Haridwar</option>
+                                   <option value="msr">Mussoorie</option>
+                                   <option value="pd">Pauri</option>
+                                   <option value="chmb">Chamba</option>
+
+                                </optgroup>
+
+                                <optgroup label="Delhi">
+                                    <option value="sec15">Noida</option>
+                                    <option value="axrdm">Akhsar Dham</option>
+                                    <option value="Nplc">Nehru Place</option>
+                                    <option value="gtbn">Guru Teg Bahadur Nagar</option>
+                                    <option value="lxmn">Laxmi Nagar</option>
+                                    <option value="lotml">Lotus Temple</option>
+                                    <option value="redfrot">Red Fort</option>
+                                    <option value="indgt">India Gate</option>
+                                    <option value="wazirbd">Wazirabad</option>
+                                    <option value="dwarka">Dwarka</option>
+                                    <option value="vaishali">Vaishali</option>
+                                    <option value="ninzm">New Delhi</option>
+                                    <option value="newdli">Hzarat Nizzamuddin</option>
+                                    <option value="vasantvihar">Vasant Vihar</option>
+                                    
+
+                                </optgroup>
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="_address">Address</label></td>
+                    <td><textarea name="address" id="add" cols="30" rows="5"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit">Submit
+                   <input type="reset">Reset</td>
+                </tr>
+
+                
+                
+        
+            </table>
+       </fieldset>
+      
+
+    </form>
+   </div>
+    
+</body>
+</html>

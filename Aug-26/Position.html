@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position concept</title>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 1200px;
+            margin: auto; 
+        }
+
+        header{
+            padding: 10px;
+            background: aqua;
+        }
+        nav{
+            padding: 10px;
+            background-color: gray;
+        }
+        main{
+            display: flex;
+
+        }
+        aside{
+            background: pink;
+            flex: 1 0 25%;
+            padding: 10px;
+        }
+
+        section{
+            background: yellow;
+            flex: 1 0 75%;
+            padding: 10px;
+        }
+
+        footer{
+            padding: 10px;
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <Header>This is Header</Header>
+        <nav>Navigation menu</nav>
+
+        <main>
+            <aside>This is left sidebar</aside>
+            <section>This is Right section</section>
+        </main>
+
+        <footer>This is footer</footer>
+    </div>
+</body>
+</html>
