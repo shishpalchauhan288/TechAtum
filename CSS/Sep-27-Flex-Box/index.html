@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Box</title>
+    <style>
+        *{margin:0; box-sizing: border-box;}
+        a{text-decoration: none;}
+        img{vertical-align: bottom;}
+        label {display: inline-block; }
+        button{cursor:pointer; padding: 0;}
+       /* html{} */
+        :root{
+            --ff: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            --grad1:linear-gradient(90deg, pink, lightblue);
+        }
+
+        body{
+            font-family: var(--ff);
+            background: var(--grad1);
+            font-size: 16px;
+            line-height: 1.2;
+        }
+        .container{
+            width: calc(100% - 200px);
+            margin: auto;
+            background: #fff;
+        }
+         nav{
+            padding: 10px;
+            background: #333;
+            color: #eee;}
+            nav ul{list-style: none; padding: 0;
+            display: flex;
+            justify-content: center;}
+
+            nav ul li{
+                margin-right: 10px; border: 1px solid #eee;
+                flex-grow: 0;
+                flex-basis: 10%;
+            }
+            nav ul li a{color: #fff; display: block; padding: 10px;}
+            main{background: #fcc; display: flex;}
+            main aside{ 
+                flex: 1 0 25%;
+                padding:10px; };
+                main article{
+                    flex: 1 0 75%;
+                    padding: 10px;
+                }
+                .row {display: flex; flex-flow: row wrap;}
+                .row section{flex: 1 0 50%; padding: 10px;}
+                footer{padding:  10px; background: #222; color: #fff; display: flex; justify-content: space-between;} 
+                .row{
+                    display: flex; flex-flow: row wrap;}
+                    [class^="col-"] {flex: 1 0 auto;}
+                    [class$="2"]{flex: 1 0 auto;}
+                    [class*="1"]{flex: 1 0 auto;}
+
+                    input,button,select{font-family: var(--ff);}
+                    input[type="checkbox"]{accent-color: aqua;}
+                    input[type="checkbox"]~ span{color:red;}
+                    input[type="checkbox"]:checked~span{color: green;}
+
+                    input[type="number"]:required~span{color: orange;}
+                    input[type="number"]:valid~span{color: green;}
+
+                    input[type="number"]:invalid~span{color: red;}
+
+                    ol li:focus-within{background: #ddd;}
+
+
+                    ol{border: 1px solid #000; list-style: decimal inside; padding: 0;}
+                    ol li {padding: 5px;}
+                    ol li:not(:first-child){border-top:  1px solid #000;}
+                    ::placeholder{color: pink;}
+                    ::selection{background: green; color: rgb(242, 237, 237);}
+           
+
+        .drop::before{
+            content: "";
+            border: 5px solid ;
+            display: inline-block;
+            border-color:   black transparent transparent transparent;
+            margin: -2.5px 3px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- table>tr*5>td{0}*8 -->
+        <header>
+            <form action="">
+                <label><input type="search" required><button>Search</button>
+                </label>
+            </form>
+        </header>
+        <nav>
+            <ul>
+                <li><a class="drop" href="#">Home</a></li>
+                <li><a class="drop" href="#">About</a></li>
+                <li><a href="#">Archives</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <aside>
+                <h2>Aside</h2>
+                    <ol>
+                        <li>List Item</li>
+                        <li>List<a href="">Item</a></li>
+                        <li>List Item</li>
+                        <li>List<a href="">Item</a></li>
+                    </ol>
+                    <label for=""><input type="checkbox"><span>Terms &amp; Conditions</span></label>
+                    <label for=""><input type="checkbox"><span>Contributr 10Rs For Covid Fund</span></label>
+                    <label for=""><input type="number" required min="5" max="10"><span>Age</span></label>
+                    <label for=""><input type="text" placeholder="Enter Name"></label>
+            </aside>
+            <article>
+                <h2>Article</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi odit, accusamus explicabo numquam, culpa nostrum blanditiis rem ab quae quibusdam, dolorem saepe nam perspiciatis modi ea iure voluptatibus consequatur repudiandae natus hic temporibus. Numquam, est dolorem ipsam ipsa inventore nihil voluptatibus sunt repellat deserunt nostrum facere dolore placeat nemo nisi sint accusamus tenetur adipisci repellendus voluptatum repudiandae unde recusandae doloribus. Quibusdam aliquid totam consequuntur rerum ex quod, quo saepe unde ipsum autem provident quis ipsa assumenda asperiores exercitationem illo voluptatibus quisquam nobis non corporis eius est corrupti doloremque dignissimos! Magni voluptatibus illo voluptatem quae quod quos ex hic consequuntur ratione.</p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum et, est in sapiente incidunt itaque ullam ex unde nisi aut eos, explicabo atque debitis neque! Cumque, in quas. Ea totam laudantium eligendi est ipsa commodi harum laboriosam sunt magni delectus? Quidem iusto amet nobis nemo, fugiat natus placeat debitis aperiam voluptatem. Reiciendis, adipisci delectus magni, harum mollitia voluptas sapiente molestias accusantium non unde maxime itaque, molestiae explicabo. Expedita debitis cupiditate hic laborum, ipsa saepe, possimus minima, eligendi nesciunt quisquam amet. Illo laudantium amet, doloribus quam nulla in accusamus blanditiis odio ad sunt, ipsum deleniti adipisci, tempora voluptas aspernatur saepe dolorem.</p>
+
+            <div class="row">
+                <section><h3>Section 1</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis asperiores numquam, incidunt cum dolorum omnis eum error vero ad! Magni maiores praesentium ullam facere necessitatibus libero hic aspernatur enim quis. Illum maxime maiores nisi esse doloribus consectetur perferendis assumenda corrupti asperiores, omnis magni dolor minus quae odio quidem suscipit, accusantium tenetur aspernatur modi. Hic minima modi autem architecto exercitationem, perferendis sit odio possimus quis incidunt eos dolorum laboriosam nobis saepe omnis iusto unde fugiat impedit delectus, itaque obcaecati tenetur numquam eligendi quidem! Doloribus atque voluptatibus deserunt nisi eos veniam, numquam sed vitae eaque, explicabo eveniet cupiditate tempora et suscipit. Maxime.</p></section>
+                <section><h3>Section 2</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis asperiores numquam, incidunt cum dolorum omnis eum error vero ad! Magni maiores praesentium ullam facere necessitatibus libero hic aspernatur enim quis. Illum maxime maiores nisi esse doloribus consectetur perferendis assumenda corrupti asperiores, omnis magni dolor minus quae odio quidem suscipit, accusantium tenetur aspernatur modi. Hic minima modi autem architecto exercitationem, perferendis sit odio possimus quis incidunt eos dolorum laboriosam nobis saepe omnis iusto unde fugiat impedit delectus, itaque obcaecati tenetur numquam eligendi quidem! Doloribus atque voluptatibus deserunt nisi eos veniam, numquam sed vitae eaque, explicabo eveniet cupiditate tempora et suscipit. Maxime.</p></section>
+                <section><h3>Section 3</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis asperiores numquam, incidunt cum dolorum omnis eum error vero ad! Magni maiores praesentium ullam facere necessitatibus libero hic aspernatur enim quis. Illum maxime maiores nisi esse doloribus consectetur perferendis assumenda corrupti asperiores, omnis magni dolor minus quae odio quidem suscipit, accusantium tenetur aspernatur modi. Hic minima modi autem architecto exercitationem, perferendis sit odio possimus quis incidunt eos dolorum laboriosam nobis saepe omnis iusto unde fugiat impedit delectus, itaque obcaecati tenetur numquam eligendi quidem! Doloribus atque voluptatibus deserunt nisi eos veniam, numquam sed vitae eaque, explicabo eveniet cupiditate tempora et suscipit. Maxime.</p></section>
+                <section><h3>Section 4</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis asperiores numquam, incidunt cum dolorum omnis eum error vero ad! Magni maiores praesentium ullam facere necessitatibus libero hic aspernatur enim quis. Illum maxime maiores nisi esse doloribus consectetur perferendis assumenda corrupti asperiores, omnis magni dolor minus quae odio quidem suscipit, accusantium tenetur aspernatur modi. Hic minima modi autem architecto exercitationem, perferendis sit odio possimus quis incidunt eos dolorum laboriosam nobis saepe omnis iusto unde fugiat impedit delectus, itaque obcaecati tenetur numquam eligendi quidem! Doloribus atque voluptatibus deserunt nisi eos veniam, numquam sed vitae eaque, explicabo eveniet cupiditate tempora et suscipit. Maxime.</p></section>
+                <section><h3>Section 5</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis asperiores numquam, incidunt cum dolorum omnis eum error vero ad! Magni maiores praesentium ullam facere necessitatibus libero hic aspernatur enim quis. Illum maxime maiores nisi esse doloribus consectetur perferendis assumenda corrupti asperiores, omnis magni dolor minus quae odio quidem suscipit, accusantium tenetur aspernatur modi. Hic minima modi autem architecto exercitationem, perferendis sit odio possimus quis incidunt eos dolorum laboriosam nobis saepe omnis iusto unde fugiat impedit delectus, itaque obcaecati tenetur numquam eligendi quidem! Doloribus atque voluptatibus deserunt nisi eos veniam, numquam sed vitae eaque, explicabo eveniet cupiditate tempora et suscipit. Maxime.</p></section>
+                <section><h3>Section 6</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis asperiores numquam, incidunt cum dolorum omnis eum error vero ad! Magni maiores praesentium ullam facere necessitatibus libero hic aspernatur enim quis. Illum maxime maiores nisi esse doloribus consectetur perferendis assumenda corrupti asperiores, omnis magni dolor minus quae odio quidem suscipit, accusantium tenetur aspernatur modi. Hic minima modi autem architecto exercitationem, perferendis sit odio possimus quis incidunt eos dolorum laboriosam nobis saepe omnis iusto unde fugiat impedit delectus, itaque obcaecati tenetur numquam eligendi quidem! Doloribus atque voluptatibus deserunt nisi eos veniam, numquam sed vitae eaque, explicabo eveniet cupiditate tempora et suscipit. Maxime.</p></section>
+                 
+
+ 
+                   
+            </div>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2022</p>
+            <p>All Rights Reserved</p>
+        </footer>
+
+    </div>
+    
+</body>
+</html>

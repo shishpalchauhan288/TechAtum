@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Layout</title>
+    <style>
+        *, ::before, ::after{ margin: 0; box-sizing: border-box;}
+        a{ text-decoration: none;}
+        img{ vertical-align: bottom;}
+        label{ display: inline-block;}
+        button{ cursor: pointer; padding: 0;}
+
+        
+        body{ 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: #c8c8c8;
+ 
+        }
+        .container{
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        header{ background-color: #ffa07a; padding: 10px; display: flex;justify-content: space-between; align-items: center;}
+       
+        header form input{height: 28px; border: none; background: transparent; padding-left: 24px; }
+        header form button{ padding: 5px; border: 1px solid #000; background: #fff; border-radius: 5px; height: 28px; vertical-align: bottom; }
+        /* header form input:focus{ outline: no;} */
+        header form button:hover{ background: #222; color: #fff;} 
+        header label{ border: 1px solid #000; background: #fff; border-radius: 5px; padding: 0 px;}
+        header label::before{
+            content: '\1F50E';
+            position: absolute;
+        }
+
+        nav{ background: #222; padding: 10px; position: sticky; top: 0; z-index: 100; }
+        nav ul{ list-style: none; padding: 0; }
+        nav > ul{ display: flex;}
+        nav > ul > li{ margin-right: 10px; }
+        nav ul li a{ display: block; padding: 8px 12px; color: #fff;}
+        nav ul li a:focus{ outline: dashed 2px blue;}
+        nav ul li a:hover{ background: #ccc; color: #000; }
+        
+        nav ul li a:active{ background: #f22;}
+        .drop::before{ 
+          content: '';
+          border: 5px solid;  
+          display: inline-block;
+          border-color: #fff transparent transparent;
+          margin: -3px 3px;
+         }
+        nav ul li a:hover::before{ 
+            border-top-color: #000;
+        }
+        nav .dropdown{ position: absolute; background: #444; padding: 10px; display: none;}
+        .full-dropdown{ left: 0; right: 0; }
+        .flex{ display: flex;}
+        nav > ul > li:hover .dropdown{ display: block; }
+
+        main{ background-color: #ffb6c1; display: flex;}
+        main aside{ flex: 1 0 25%; padding: 10px; height: 100%; position: sticky; top: 55px;}
+        main section{ flex: 1 0 75%; padding: 10px;}
+        main > p{ margin-top: 10px;}
+
+        .container > footer{ background: #060; color: #fff; padding: 10px;}
+       
+        section{ border: 1px solid #000; padding: 10px; margin: 10px 0; background: #fff;}
+        section img{ float: left; margin-right: 10px; }
+        section::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        main ul{ border: 1px solid #000; margin: 10px 0; list-style: url(img/light.svg) inside; padding: 0; }
+        main li{ border: 1px solid #000; padding: 5px; }
+
+        main ol{ border: 1px solid #000; margin: 10px 0; padding: 0; list-style: decimal-leading-zero inside;}
+
+
+        main ol li:nth-child(5n){ background: aqua; }
+
+        blockquote p::before{ content: open-quote; font-family: serif;  }
+        blockquote p::after{ content: close-quote; font-family: serif; }
+
+
+        blockquote{ margin: 40px 20px;}
+        blockquote footer{ text-align: right;}
+        blockquote footer::before{ content: '—';}
+
+        h1::before{ content: '\1f4a1'; position: relative; left: -40px; }
+        
+        .codeblock{ border: 1px solid #000; background: #fff; margin: 10px 0; padding: 10px; border-radius: 10px;}
+        
+        .codeblock pre code{ counter-reset: i; }                /* reset i to zero */
+        .codeblock pre code span{ counter-increment: i; }        /* increment i */
+        .codeblock pre code span::before{ content: counter(i); margin-right: 10px; color: gray; }
+
+        .chat{ border: 1px solid #000; background: #fff; margin: 10px; padding: 10px; border-radius: 5px; display: table; position: relative; }
+        .chat::before{
+            content: '';
+            display: inline-block;
+            border: 10px solid;
+            border-color: transparent  transparent #222 transparent;
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            transform: translateX(-50%);
+        }
+
+        .banner{ background: red; position: relative; }
+        .banner img{ max-width: 100%; height: auto; }
+        .controls{  width: 40px; height: 40px; border: 1px solid #000; font-size: 32px; border-radius: 50%; background: #fff; position: absolute; top: 50%; transform: translateY(-50%);}
+        .prev{ left: 0;}
+        .next{ right: 0;}
+        .banner figcaption{ position: absolute; bottom: 0; background: rgba(255, 255, 255, 50%); left: 0; right: 0; text-align: center; padding: 10px 0; }
+        .top{ border: 1px solid #000; padding: 10px; border-radius: 5px; background: #fff; position: fixed; right: 10px; bottom: 10px;}
+
+        .table{ background: #fff; border: 1px solid #000; width: 100%; border-collapse: collapse; position: relative; z-index: 1;}
+        .table th{ border: 1px solid #666; padding: 10px; background: #222; color: #fff; position: sticky; top: 55px; }
+        .table td{ border: 1px solid #000; padding: 10px; }
+    </style>
+</head>
+<body>
+   <div class="container">
+        <header>
+            <h1>Brand <small>Name</small></h1>     
+            <form action="">
+                <label><input type="search" required></label> <button>Search</button>
+            </form>       
+        </header>
+        <nav>
+            <ul>
+                <li><a href="3rf">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a class="drop" href="javascript:void(0)">Blogs</a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="">Technical</a></li>
+                            <li><a href="">Fiction</a></li>
+                            <li><a href="">Science</a></li>
+                            <li><a href="">Technology</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a class="drop" href="javascript:void(0)">Courses</a>
+                    <div class="dropdown full-dropdown">
+                        <div class="flex">
+                            <ul>
+                                <li><a href="">Web Designing</a></li>
+                                <li><a href="">Frontend</a></li>
+                                <li><a href="">Fullstack</a></li>
+                                <li><a href="">Mean Stack</a></li>
+                                <li><a href="">Mern Stack</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="">Web Designing</a></li>
+                                <li><a href="">Frontend</a></li>
+                                <li><a href="">Fullstack</a></li>
+                                <li><a href="">Mean Stack</a></li>
+                                <li><a href="">Mern Stack</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="">Web Designing</a></li>
+                                <li><a href="">Frontend</a></li>
+                                <li><a href="">Fullstack</a></li>
+                                <li><a href="">Mean Stack</a></li>
+                                <li><a href="">Mern Stack</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="">Web Designing</a></li>
+                                <li><a href="">Frontend</a></li>
+                                <li><a href="">Fullstack</a></li>
+                                <li><a href="">Mean Stack</a></li>
+                                <li><a href="">Mern Stack</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="">Web Designing</a></li>
+                                <li><a href="">Frontend</a></li>
+                                <li><a href="">Fullstack</a></li>
+                                <li><a href="">Mean Stack</a></li>
+                                <li><a href="">Mern Stack</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="banner" role="banner">
+            <figure>
+                <img src="img/bg2.jpg" alt="" width="1200" height="316">
+                <figcaption>Lorem Ipsum</figcaption>
+            </figure>
+
+            <button aria-label="previous" class="controls prev">&larr;</button>
+            <button aria-label="next" class="controls next">&rarr;</button>
+        </div>
+        <main>
+            <aside>
+                <h2>Aside</h2>
+                <ol>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                    <li>List Item</li>
+                </ol>
+            </aside>
+            <!-- <dialog open>Dialog Box</dialog> -->
+            <section>
+            <h2>Heading Level Two</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non explicabo voluptatum vitae, quibusdam veniam aspernatur ab aut ipsum repellendus molestias officia id voluptate molestiae dignissimos nulla facere suscipit est quam.</p>
+           
+            <blockquote> 
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non explicabo voluptatum vitae, quibusdam veniam aspernatur ab aut ipsum repellendus molestias officia id voluptate molestiae dignissimos nulla facere suscipit est quam.</p>
+                <footer>Quote By <cite>Author</cite></footer>
+            </blockquote>
+
+            <table class="table">
+                <thead><tr><th>S No</th><th>Name</th><th>BP</th><th>CP</th><th>Profit (in %)</th><th>Profit (in &#8377;)</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td>Data 6</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <div class="chat"><p>Lorem ipsum dolor sit amet.</p></div>
+            <div class="chat"><p>Lorem ipsum dolor sit, <br> amet consectetur adipisicing elit.</p></div>
+
+<div class="codeblock">
+<pre><code><span>let x=3;</span>
+<span>let y=4;</span>
+<span>let sum=x+y;</span>
+<span>console.log(sum);</span>
+</code></pre>
+</div>
+<div class="codeblock">
+<pre><code><span>let x=3;</span>
+<span>let y=4;</span>
+<span>let z=5;</span>
+<span>let sum=x+y+z;</span>
+<span>console.log(sum);</span>
+</code></pre>
+</div>
+            
+            <ul>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+            </ul>
+            <ol>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+            </ol>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non explicabo voluptatum vitae, quibusdam veniam aspernatur ab aut ipsum repellendus molestias officia id voluptate molestiae dignissimos nulla facere suscipit est quam.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non explicabo voluptatum vitae, quibusdam veniam aspernatur ab aut ipsum repellendus molestias officia id voluptate molestiae dignissimos nulla facere suscipit est quam.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non explicabo voluptatum vitae, quibusdam veniam aspernatur ab aut ipsum repellendus molestias officia id voluptate molestiae dignissimos nulla facere suscipit est quam.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non explicabo voluptatum vitae, quibusdam veniam aspernatur ab aut ipsum repellendus molestias officia id voluptate molestiae dignissimos nulla facere suscipit est quam.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non explicabo voluptatum vitae, quibusdam veniam aspernatur ab aut ipsum repellendus molestias officia id voluptate molestiae dignissimos nulla facere suscipit est quam.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non explicabo voluptatum vitae, quibusdam veniam aspernatur ab aut ipsum repellendus molestias officia id voluptate molestiae dignissimos nulla facere suscipit est quam.</p>
+        
+            <!-- <section>
+                <img src="img/pic-1.jpg" alt="" width="380" height="250">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, vel voluptas. Nihil explicabo reprehenderit, expedita quo praesentium sequi alias dolorem? Cupiditate officiis facere pariatur eius minus nostrum, corrupti velit inventore. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam expedita eaque aliquam dolores eos mollitia maxime, optio repudiandae iste quia ipsum sint voluptatem perspiciatis voluptates ab! Sapiente autem, ullam deleniti cumque eligendi, tempora nesciunt vitae inventore vel labore ducimus cupiditate, nam minima. Quos earum, facilis ex, officia fuga consequuntur ducimus iste veniam laudantium eveniet maxime alias consequatur facere? Impedit consectetur iure explicabo fugit sed a commodi autem eius ullam rem cumque ab possimus, voluptas mollitia animi dolorem dicta. Minus eaque iure corporis necessitatibus at accusantium, libero voluptatem natus et, explicabo quos id sapiente rem eveniet nam dolorum earum, quod accusamus unde corrupti a.</p>
+            </section> -->
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2022</p>
+            <button class="top">Go To Top</button>
+        </footer>
+    </div>
+</body>
+</html>

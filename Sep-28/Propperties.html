@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+    <style>
+        @font-face {
+            font-family: mr;
+            src: url(fonts/montserrat-v24-latin-regular);
+            font-display: swap;
+        }
+        @font-face{
+            font-family: mb;
+            src: url(fonts/montserrat-v24-latin-700.woff2);
+            font-display: swap;
+
+        }
+
+        :root{
+            --ff:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+            Roboto, Oxygen, Ubuntu, Cantarell, 'Open Snas', 'Helvetica Neue', sans-serif;
+            --fs: 16px;
+            --bs-blue: #0d6efd;
+
+            --bs-indigo: #6610f2;
+            --bs-purple: #6f42c1;
+            --bs-pink: #d63384;
+            --bs-red: #dc3545;
+            --bs-yellow: #ffc107;
+            --bs-green: #198754;
+            --bs-teal: #20c997;
+            --bs-cyan: #0dcaf0;
+            --bs-black: #000;
+            --bs-white: #fff;
+        }
+        *, ::before, ::after{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        a {
+            text-decoration: none;
+
+        }
+        label{
+            display: inline-block;
+        }
+        
+        img {
+            vertical-align: bottom;
+        }
+
+        :disabled{
+            cursor: not-allowed;
+        }
+        button {
+            cursor: pointer;
+        }
+        abbr[title]{
+            cursor: help;
+        }
+        html {
+            font-size: 16px;
+        }
+
+        h1, h2, h3, h4, th, b, strong{
+            font-family: mb, sans-serif;
+        }
+
+        body {
+            font-family: mr, sans-serif;
+            background-color: #bbb;
+        }
+
+        .container{
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 10px;
+        }
+        .header{
+            padding: 10px;
+        }
+        nav{
+            background: repeating-linear-gradient(133deg, #999 0, #ccc 50px);
+            color: #222;
+            animation: movebg 10s infinite linear;
+        }
+        @keyframes movebg {
+            from{background-position-x: 0;}
+            to{background-position-x: -707;}
+            }
+            nav ul{list-style: none; padding: 0; display: flex;}
+            nav ul li{margin-right: 10px;}
+            nav ul li a{
+                display: block;
+                color: inherit;
+                padding: 0 10px; line-height: 50px;
+                transition: 1s 0.5s;
+
+            }
+
+            nav ul li a:hover{background: #222; color: #fff;}
+            main{
+                padding: 10px;
+            }
+            footer{padding: 10px;}
+            h1{
+                background: linear-gradient(red, blue);
+                -webkit-background-clip: text;
+                color: transparent;
+                transition: 1s ease, 1s 1s color;
+            }
+            header h1:hover{padding-left: 50%; color: #000}
+            .box{width: 200px; line-height: 50px; border: 1px solid #000;
+                text-align: center;
+                transition: 1s;
+                background: #fff;
+            }
+            @keyframes movebox{
+                0%{transform: translateX(0) rotate(0deg);}
+                50%{transform: translateX(100%) rotate(0deg);} 
+                100%{transform: translateX(100%); rotate: (360deg);}
+                
+            }
+            .box:hover{
+                animation-play-state: paused;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CSS3</h1>
+            <span></span>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="">Career</a></li>
+                <li><a href="">Contact</a></li>
+                
+            </ul>
+        </nav>
+        <main>
+            <h2>Main</h2>
+            <div class="grid">
+                <div class="col">col 1</div>
+                <div class="col">col 2</div>
+                <div class="col">col 3</div>
+                <div class="col">col 4</div>
+                <div class="col">col 5</div>
+                <div class="col">col 6</div>
+                <div class="col">col 7</div>
+                <div class="col">col 8</div>
+            </div>
+            <div class="box">Box</div>
+            <div class="clip">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit consectetur iure obcaecati facilis 
+                ea alias laudantium? Repellat repellendus rerum 
+                molestiae! Odio consequuntur delectus amet, doloremque deserunt fugit autem excepturi facilis!
+            </div>
+            <p class="mult">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                 eveniet sed aspernatur reprehenderit 
+                dolores, itaque alias dolor voluptatem accusamus dolorum.
+            </p>
+        </main>
+
+        <footer>
+            <p>footer</p>
+        </footer>
+    </div>
+    
+</body>
+</html>

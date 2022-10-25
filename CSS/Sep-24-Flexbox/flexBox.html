@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Box concept in css</title>
+
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+      }
+      label {
+        display: inline-block;
+        border-color: green;
+        color: green;
+      }
+      img {
+        vertical-align: bottom;
+      }
+      :disabled {
+        cursor: not-allowed;
+      }
+      button {
+        cursor: pointer;
+        border-color: green;
+        color: green;
+        margin-right: 70px;
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      body {
+        font: 16/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        background: #ccc;
+      }
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        background: #fff;
+      }
+
+      header {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      h1 {
+        color: green;
+        padding-right: 50px;
+        margin-left: 30px;
+      }
+
+      ul {
+        display: flex;
+        padding-left: 200px;
+        margin-left: 70px;
+      }
+      ul li {
+        margin-right: 10px;
+      }
+      ul li a {
+        color: inherit;
+        display: block;
+        padding: 8px 12px;
+      }
+
+      section h1{
+        text-align: center;
+        color: #222;
+      }
+
+      main {
+        display: flex;
+      }
+      main aside {
+        flex-basis: 33.33%;
+        padding: 10px;
+        background: pink;
+      }
+      main article {
+       
+        flex-basis: 66.66%;
+        padding: 10px;
+        background: lightgoldenrodyellow;
+        align-items: center;
+      }
+      main article form{
+        align-items: center;
+        justify-content: center;
+
+      }
+      .btn{
+        background-color: green;
+        color: white;
+        padding:  10px;
+        border-radius: 4px;
+        /* align-items: center; */
+      }
+      .row {
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .row .col {
+        padding: 10px;
+        background: #ddd;
+        flex: 1 0 50%;
+        border: 1px solid black;
+      }
+
+      footer {
+        padding: 10px;
+        background: #222;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      footer a {
+        color: inherit;
+      }
+
+      .text {
+        display: flex;
+      }
+      .text p {
+        background: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>GREEN</h1>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Blogs</a></li>
+          <li><a href="">Career</a></li>
+          <li><a href="">Contact</a></li>
+        </ul>
+        <form action="aa" role="search">
+          <button>Get Started</button>
+        </form>
+       
+      </header>
+
+      <section>
+        <h1>CNOTACT</h1>
+        <hr>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque
+          deserunt magnam illum animi maxime iure ea error, pariatur, dolor
+          laboriosam nam ut vel aspernatur exercitationem necessitatibus dicta
+          
+        </p>
+      </section>
+
+      <main>
+        <aside>
+          <h3>Location:</h3>
+          <p>A1DB Adam Street New Delhi 248002</p>
+            
+
+          <h3>Email:</h3>
+          <p>A1DB Adam Street New Delhi 248002</p>
+   
+
+          <h3>Call:</h3>
+          <p>+1-55519555488444</p>
+
+          <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d877930.7271962644!2d77.5435969225135!3d30.734788880179803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sU.S.%20Polo%20Assn.!5e0!3m2!1sen!2sin!4v1664099029769!5m2!1sen!2sin" width="300" height="200" 
+          style="border:0;" 
+          allowfullscreen="" loading="lazy"
+           referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </aside>
+
+        <article>
+          <form action="ss">
+            
+            <label for="">Your Name</label><br>
+            <input type="name" required> <br> <br>
+            <label for="">Your Email</label><br>
+            <input type="email" required> <br>
+            <label for="">Subject</label><br>
+            <input type="name" required><br> <br>
+
+               <label for="mesg">Message</label><br>
+              <textarea name="message" id="" cols="30" rows="4"></textarea>
+
+              <button class="btn">Send Message</button>
+
+
+          </form>
+           
+        
+        </article>
+      </main>
+      <footer>
+        <p>&copy; 2022</p>
+        <p>Site By : <a href="">Link</a></p>
+      </footer>
+    </div>
+  </body>
+</html>

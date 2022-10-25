@@ -1,9 +1,0 @@
-HTML5
-CSS3
-JavaScript
-Photoshop
-UI Testings
-Git & GitHub
-       +
-React + Angular
-

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Menu using Float</title>
+    <style>
+        *{margin: 0; box-sizing: border-box;}
+        .container{width: 1200px; margin: auto;}
+        a{text-decoration: none;}
+        .nav{background: #222;}
+        .nav ul{list-style: none;  padding: 0;}
+        .nav ul li{
+            float: left;
+            margin: 0px 5px;
+        }
+        
+        .nav ul::after{
+            content:"";
+            display: block;
+            clear: both;
+        }
+        .nav ul li a{color: #fff; display: block; padding: 8px 12px;}
+        .nav ul li:hover a{background:#ccc; color: #000;}
+
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+    <nav class="nav">
+        <ul>
+            <li><a href="">HOME</a></li>
+            <li><a href="">ABOUT</a></li>
+            <li><a href="">SERVICES</a></li>
+            <li><a href="">SOLUTION</a></li>
+            <li><a href="">CONTACT</a></li>
+
+        </ul>
+    </nav>
+    </div>
+    
+</body>
+</html>
